@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 16:33:22 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/25 22:14:54 by dmatesho         ###   ########.fr       */
+/*   Created: 2020/02/25 23:12:48 by dmatesho          #+#    #+#             */
+/*   Updated: 2020/02/25 23:31:13 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(const char *s)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t	len;
-	size_t	i;
-	char	*str;
+	t_list *new;
+	t_list *cur;
+	t_list *ncur;
 
-	len = ft_strlen(s);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	i = 0;
-	while (i < len)
+	cur = lst;
+	new = f(cur);
+	ncur = new;
+	while (cur)
 	{
-		str[i] = s[i];
-		i++;
+		cur = cur->next;
+		ncur->next = f(cur);
+		ncur = ncur->next;
 	}
-	str[i] = '\0';
-	return (str);
+	return (new);
 }
