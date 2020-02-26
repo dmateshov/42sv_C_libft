@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:16:33 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/24 12:37:29 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/26 13:46:30 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_strequ(char const *s1, char const *s2)
 {
+	if (!s1 || !s2)
+		return (0);
 	if (ft_strcmp(s1, s2) == 0)
 		return (1);
 	return (0);

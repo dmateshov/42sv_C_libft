@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 15:41:41 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/26 12:03:30 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/26 14:00:50 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char			*ft_strtrim(char const *s)
 	int		k;
 	char	*ptr;
 
+	if (!s)
+		return (NULL);
 	i = is_ws(s, 0, 1);
 	j = ft_strlen(s);
 	if (i < j)

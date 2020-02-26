@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 12:37:53 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/25 13:56:09 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/26 13:47:49 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
+	if (!s1 || !s2)
+		return (0);
 	if (ft_strncmp(s1, s2, n) == 0)
 		return (1);
 	return (0);
