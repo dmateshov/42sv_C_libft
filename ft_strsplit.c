@@ -6,26 +6,24 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:07:56 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/25 19:32:50 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/25 21:18:45 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-//**hhh**gg*ds*****fyyd**
-
-
-int	ft_countwords(char const *s, char c)
+int		ft_ctwd(char const *s, char c)
 {
 	int num;
 
+	num = 0;
 	while (*s == c)
 		s++;
 	while (*s)
 	{
 		if (*s == c)
 		{
-			while (*s != c)
+			while (*s == c)
 				s++;
 			num++;
 		}
@@ -34,17 +32,43 @@ int	ft_countwords(char const *s, char c)
 	return (num);
 }
 
-/*
+int		ft_wdl(char const *s, char c)
+{
+	int len;
+
+	len = 0;
+	while (*s != c && *s)
+	{
+		s++;
+		len++;
+	}
+	return (len);
+}
+
 char	**ft_strsplit(char const *s, char c)
 {
-	if (!s
-	*/
-#include <stdio.h>
+	char	**ptr;
+	int		i;
+	int		j;
 
-int	main(void)
-{
-	char str[] = "**hhh**gg*ds*****fyyd**";
-
-	int nn = ft_countwords(str, '*');
-	printf("%d", nn);
+	if (!s || !(ptr = (char **)malloc(sizeof(char **) * (ft_ctwd(s, c) + 1))))
+		return (NULL);
+	i = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s != c && *s)
+		{
+			if (!(ptr[i] = (char *)malloc(sizeof(char *) * (ft_wdl(s, c) + 1))))
+				return (NULL);
+			j = 0;
+			while (*s != c && *s)
+				ptr[i][j++] = *s++;
+			ptr[i][j] = 0;
+			i++;
+		}
+	}
+	ptr[i] = NULL;
+	return (ptr);
 }
