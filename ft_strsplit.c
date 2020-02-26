@@ -6,13 +6,13 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:07:56 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/25 21:18:45 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/25 21:59:41 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_ctwd(char const *s, char c)
+static int		ft_ctwd(char const *s, char c)
 {
 	int num;
 
@@ -32,7 +32,7 @@ int		ft_ctwd(char const *s, char c)
 	return (num);
 }
 
-int		ft_wdl(char const *s, char c)
+static int		ft_wdl(char const *s, char c)
 {
 	int len;
 
@@ -45,7 +45,7 @@ int		ft_wdl(char const *s, char c)
 	return (len);
 }
 
-char	**ft_strsplit(char const *s, char c)
+static char		**ft_strsplit(char const *s, char c)
 {
 	char	**ptr;
 	int		i;
