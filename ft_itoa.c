@@ -6,13 +6,13 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 21:49:49 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/23 21:45:44 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/25 21:55:38 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_num_len(int n)
+static int		ft_num_len(int n)
 {
 	int				len;
 	unsigned int	nc;
@@ -33,7 +33,7 @@ int		ft_num_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	unsigned int	nc;
 	char			*ptr;
