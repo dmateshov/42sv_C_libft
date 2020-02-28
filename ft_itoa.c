@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/22 21:49:49 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/25 21:55:38 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:00:56 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ char			*ft_itoa(int n)
 	int				len;
 
 	len = ft_num_len(n);
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(ptr = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	ptr[len] = 0;
 	len--;
 	if (n < 0)

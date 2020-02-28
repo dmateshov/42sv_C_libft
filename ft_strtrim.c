@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 15:41:41 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/26 14:00:50 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:31:31 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ char			*ft_strtrim(char const *s)
 	j = ft_strlen(s);
 	if (i < j)
 		j = is_ws(s, j - 1, -1) + 1;
-	ptr = (char *)malloc(j - i + 1);
+	if (!(ptr = (char *)malloc(j - i + 1)))
+		return (NULL);
 	k = 0;
 	while (i < j)
 	{

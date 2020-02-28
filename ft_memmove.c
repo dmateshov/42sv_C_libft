@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 16:21:44 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/21 19:11:36 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/27 13:30:26 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	const char	*ptr_src;
 	size_t		i;
 
+	if (!dst || !src || !len)
+		return (dst);
 	ptr_dst = (char *)dst;
 	ptr_src = (const char *)src;
 	if (ptr_src < ptr_dst)

@@ -6,11 +6,11 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 16:07:56 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/25 22:11:42 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/26 16:33:59 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int	ft_ctwd(char const *s, char c)
 {
@@ -51,7 +51,7 @@ char		**ft_strsplit(char const *s, char c)
 	int		i;
 	int		j;
 
-	if (!s || !(ptr = (char **)malloc(sizeof(char **) * (ft_ctwd(s, c) + 1))))
+	if (!s || !c || !(ptr = (char **)ft_memalloc(sizeof(char **) * (ft_ctwd(s, c) + 1))))
 		return (NULL);
 	i = 0;
 	while (*s)
@@ -60,7 +60,7 @@ char		**ft_strsplit(char const *s, char c)
 			s++;
 		if (*s != c && *s)
 		{
-			if (!(ptr[i] = (char *)malloc(sizeof(char *) * (ft_wdl(s, c) + 1))))
+			if (!(ptr[i] = (char *)ft_memalloc(sizeof(char *) * (ft_wdl(s, c) + 1))))
 				return (NULL);
 			j = 0;
 			while (*s != c && *s)
