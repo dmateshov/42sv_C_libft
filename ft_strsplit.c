@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:45:16 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/28 20:46:10 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/28 20:54:11 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ char		**ft_strsplit(char const *s, char c)
 {
 	char	**ptr;
 
-	if (!s || !c)
-		return (NULL);
 	if (!(ptr = (char **)malloc(sizeof(char *) * (ft_wdct(s, c) + 1))))
 		return (NULL);
 	if (!(ft_fill(ptr, s, c)))
