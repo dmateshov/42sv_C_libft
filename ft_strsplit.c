@@ -6,11 +6,12 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:45:16 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/28 21:17:48 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/28 21:25:24 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 static int	ft_wdct(char const *s, char c)
 {
