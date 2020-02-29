@@ -5,70 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 16:07:56 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/26 16:33:59 by dmatesho         ###   ########.fr       */
+/*   Created: 2020/02/27 21:55:19 by dmatesho          #+#    #+#             */
+/*   Updated: 2020/02/27 21:55:23 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <string.h>
 #include "libft.h"
 
-static int	ft_ctwd(char const *s, char c)
+static int		word_count(const char *s, char c)
 {
-	int num;
+	int			i;
 
-	num = 0;
-	while (*s == c)
-		s++;
-	while (*s)
-	{
-		if (*s == c)
-		{
-			while (*s == c)
-				s++;
-			num++;
-		}
-		s++;
-	}
-	return (num);
-}
-
-static int	ft_wdl(char const *s, char c)
-{
-	int len;
-
-	len = 0;
-	while (*s != c && *s)
-	{
-		s++;
-		len++;
-	}
-	return (len);
-}
-
-char		**ft_strsplit(char const *s, char c)
-{
-	char	**ptr;
-	int		i;
-	int		j;
-
-	if (!s || !c || !(ptr = (char **)ft_memalloc(sizeof(char **) * (ft_ctwd(s, c) + 1))))
-		return (NULL);
 	i = 0;
+	if (*s && *s != c)
+	{
+		s++;
+		i++;
+	}
 	while (*s)
 	{
 		while (*s == c)
+		{
 			s++;
+			if (*s != c && *s)
+				i++;
+		}
+		s++;
+	}
+	return (i);
+}
+
+static int		length(const char *s, char c)
+{
+	int i;
+
+	i = 0;
+	while (*s != c && *s)
+	{
+		i++;
+		s++;
+	}
+	return (i);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char		**arr;
+	size_t		i;
+	int			j;
+
+	j = 0;
+	if (!(arr = (char**)malloc(sizeof(char*) * word_count(s, c) + 1)))
+		return (NULL);
+	while (*s)
+	{
+		while (*s == c && *s)
+			s++;
+		i = 0;
 		if (*s != c && *s)
 		{
-			if (!(ptr[i] = (char *)ft_memalloc(sizeof(char *) * (ft_wdl(s, c) + 1))))
+			if (!(arr[j] = (char*)malloc(length(s, c) + 1)))
 				return (NULL);
-			j = 0;
-			while (*s != c && *s)
-				ptr[i][j++] = *s++;
-			ptr[i][j] = 0;
-			i++;
+			while (*s && *s != c)
+				arr[j][i++] = (char)*s++;
+			arr[j][i] = '\0';
+			j++;
 		}
 	}
-	ptr[i] = NULL;
-	return (ptr);
+	arr[j] = NULL;
+	return (arr);
 }
