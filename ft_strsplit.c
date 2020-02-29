@@ -6,7 +6,7 @@
 /*   By: dmatesho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 14:45:16 by dmatesho          #+#    #+#             */
-/*   Updated: 2020/02/28 20:54:11 by dmatesho         ###   ########.fr       */
+/*   Updated: 2020/02/28 21:17:48 by dmatesho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ static int	ft_wdln(char const *s, char c)
 	return (len);
 }
 
-static char	**ft_fill(char **ptr, char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
-	int i;
-	int j;
-	int len;
+	char	**ptr;
+	int		i;
+	int		j;
 
+	if (!(ptr = (char **)malloc(sizeof(char *) * (ft_wdct(s, c) + 1))))
+		return (NULL);
 	i = 0;
 	while (*s)
 	{
@@ -59,26 +61,14 @@ static char	**ft_fill(char **ptr, char const *s, char c)
 		if (*s)
 		{
 			j = 0;
-			len = ft_wdln(s, c);
-			if (!(ptr[i] = (char *)malloc(sizeof(char) * (len + 1))))
+			if (!(ptr[i] = (char *)malloc(sizeof(char) * (ft_wdln(s, c) + 1))))
 				return (NULL);
-			while (j < len)
+			while (*s != c && *s)
 				ptr[i][j++] = (char)*s++;
 			ptr[i][j] = '\0';
 			i++;
 		}
 	}
 	ptr[i] = NULL;
-	return (ptr);
-}
-
-char		**ft_strsplit(char const *s, char c)
-{
-	char	**ptr;
-
-	if (!(ptr = (char **)malloc(sizeof(char *) * (ft_wdct(s, c) + 1))))
-		return (NULL);
-	if (!(ft_fill(ptr, s, c)))
-		return (NULL);
 	return (ptr);
 }
